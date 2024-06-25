@@ -1,0 +1,2 @@
+Folder,R2_Score,Pearson_Correlation,Spearman_Correlation,Mean_square_error,Cross_Validation_score
+train_50k_full,0.7148577296443459,0.845842210366168,0.777470400833795,1.7409175109782888,[0.71456543 0.70872868 0.70234524 0.73878263 0.71410703]

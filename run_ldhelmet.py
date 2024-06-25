@@ -14,11 +14,12 @@ def np_har(n):
 sim = {'train_50k': 120}
 os.chdir('./test_sim')
 
-for i in sim:
-    print(i)
+for ii in sim:
+    print(ii)
     lis = []
     lis1 = []
     lia = []
+    file_rate_recom =str(ii)+'_rec_rate.npy'
     file_rate = 'test_rate.npy'
 
     rate_array_1 = np.random.uniform(low=10e-13, high=10e-12, size=20)
@@ -29,8 +30,8 @@ for i in sim:
     rate_array_6 = np.random.uniform(low=10e-08, high=10e-07, size=20)
     rate_array= np.concatenate([rate_array_1, rate_array_2, rate_array_3,rate_array_4,rate_array_5,rate_array_6], axis=0)
 
-    for simNum in range(sim[i]):
-        print(i, simNum)
+    for simNum in range(sim[ii]):
+        print(ii, simNum)
 
         file_h = str(simNum) + '_haps.npy'
         file_P = str(simNum) + '_pos.npy'
@@ -64,8 +65,8 @@ for i in sim:
         np.save(file_h, H)
 
         os.system('./LDhelmet-main/ldhelmet find_confs --num_threads 24 -w 50 -o ./output_' + str(simNum) + '.conf ./' + str(simNum) + '.fasta')
-        os.system('time ./LDhelmet-main/ldhelmet table_gen --num_threads 24 -t 5.6e-8 -r 0.0 0.1 10.0 1.0 100.0 -c ./output_' + str(simNum) + '.conf -o ./output_' + str(simNum) + '.lk')
-        os.system('./LDhelmet-main/ldhelmet pade --num_threads 24 -t 5.6e-8 -x 12 --defect_threshold 40 -c ./output_' + str(simNum) + '.conf -o ./output_' + str(simNum) + '.pade')
+        os.system('time ./LDhelmet-main/ldhelmet table_gen --num_threads 24 -t 0.0028 -r 0.0 0.1 10.0 1.0 100.0 -c ./output_' + str(simNum) + '.conf -o ./output_' + str(simNum) + '.lk')
+        os.system('./LDhelmet-main/ldhelmet pade --num_threads 24 -t 0.0028 -x 12 --defect_threshold 40 -c ./output_' + str(simNum) + '.conf -o ./output_' + str(simNum) + '.pade')
         os.system('time ./LDhelmet-main/ldhelmet rjmcmc --num_threads 24 -l ./output_' + str(simNum) + '.lk -p ./output_' + str(simNum) + '.pade -s ./' + str(simNum) + '.fasta -b 50 -w 50  --burn_in 10000 -n 100000 -o ./output_' + str(simNum) + '.post')
         os.system('time ./LDhelmet-main/ldhelmet post_to_text -m -p 0.025 -p 0.50 -p 0.975 -o ./output_' + str(simNum) + '.txt ./output_' + str(simNum) + '.post')
         os.system('./LDhelmet-main/ldhelmet max_lk --num_threads 24 -l ./output_' + str(simNum) + '.lk -p ./output_' + str(simNum) + '.pade -s ./' + str(simNum) + '.fasta')

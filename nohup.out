@@ -1,0 +1,10 @@
+./simulate_MSP.py: line 14: syntax error near unexpected token `os.chdir'
+./simulate_MSP.py: line 14: `	os.chdir('./'+i)'
+./simulate_MSP.py: line 14: syntax error near unexpected token `os.chdir'
+./simulate_MSP.py: line 14: `	os.chdir('./'+i)'
+./simulate_MSP.py: line 14: syntax error near unexpected token `os.chdir'
+./simulate_MSP.py: line 14: `	os.chdir('./'+i)'
+import: unable to grab mouse `': No such file or directory @ error/xwindow.c/XSelectWindow/9184.
+import: unable to grab mouse `': No such file or directory @ error/xwindow.c/XSelectWindow/9184.
+./simulate_MSP.py: line 14: syntax error near unexpected token `os.chdir'
+./simulate_MSP.py: line 14: `	os.chdir('./'+i)'
